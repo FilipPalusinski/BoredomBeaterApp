@@ -6,22 +6,16 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.OkHttpClient
 import pl.studioandroida.niemanudy.data.remote.ActivityService
+import pl.studioandroida.niemanudy.data.repository.ActivityRepositoryImpl
+import pl.studioandroida.niemanudy.domain.repository.ActivityRepository
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
-    @Provides
-    fun provideOkHttpClient(): OkHttpClient = OkHttpClient
-        .Builder()
-        .readTimeout(15, TimeUnit.SECONDS)
-        .connectTimeout(15, TimeUnit.SECONDS)
-        .build()
 
     @Provides
     fun provideMoshi(): Moshi = Moshi
@@ -29,15 +23,21 @@ object NetworkModule {
         .add(KotlinJsonAdapterFactory())
         .build()
 
-    @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit = Retrofit
-        .Builder()
-        .baseUrl("https://www.boredapi.com/api/")
-        .client(okHttpClient)
-        .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .build()
 
     @Provides
-    fun provideActivityService(retrofit: Retrofit): ActivityService = retrofit
-        .create(ActivityService::class.java)
+    @Singleton
+    fun provideActivityService(moshi: Moshi): ActivityService{
+        return Retrofit.Builder()
+            .baseUrl("https://bored-api-http-proxy.vercel.app/api/")
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .build()
+            .create(ActivityService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCoinRepository(api: ActivityService): ActivityRepository {
+        return ActivityRepositoryImpl(api)
+    }
+
 }
