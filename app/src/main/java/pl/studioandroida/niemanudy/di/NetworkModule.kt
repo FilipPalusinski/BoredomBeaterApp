@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit
 
 @Module
 @InstallIn(SingletonComponent::class)
-class NetworkModule {
+object NetworkModule {
 
     @Provides
     fun provideOkHttpClient(): OkHttpClient = OkHttpClient
