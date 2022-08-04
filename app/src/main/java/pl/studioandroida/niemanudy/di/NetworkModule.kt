@@ -9,6 +9,7 @@ import dagger.hilt.components.SingletonComponent
 import pl.studioandroida.niemanudy.data.remote.ActivityService
 import pl.studioandroida.niemanudy.data.repository.ActivityRepositoryImpl
 import pl.studioandroida.niemanudy.domain.repository.ActivityRepository
+import pl.studioandroida.niemanudy.util.Constants.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
@@ -28,7 +29,7 @@ object NetworkModule {
     @Singleton
     fun provideActivityService(moshi: Moshi): ActivityService{
         return Retrofit.Builder()
-            .baseUrl("https://bored-api-http-proxy.vercel.app/api/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
             .create(ActivityService::class.java)

@@ -1,4 +1,4 @@
-package pl.studioandroida.niemanudy.presentation.activity_home
+package pl.studioandroida.niemanudy.presentation.home
 
 import pl.studioandroida.niemanudy.domain.model.Activity
 

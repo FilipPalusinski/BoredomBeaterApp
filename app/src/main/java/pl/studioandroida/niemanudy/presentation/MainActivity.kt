@@ -1,4 +1,4 @@
-package pl.studioandroida.niemanudy
+package pl.studioandroida.niemanudy.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -14,7 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dagger.hilt.android.AndroidEntryPoint
-import pl.studioandroida.niemanudy.presentation.activity_home.ActivityScreen
+import pl.studioandroida.niemanudy.presentation.home.ActivityScreen
 import pl.studioandroida.niemanudy.ui.theme.NieMaNudyTheme
 
 
@@ -30,7 +30,6 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Scaffold(
                         topBar = { } ,
-                        //floatingActionButtonPosition = FabPosition.End,
                         floatingActionButton = {
                             FloatingActionButton(
                                 onClick = {}

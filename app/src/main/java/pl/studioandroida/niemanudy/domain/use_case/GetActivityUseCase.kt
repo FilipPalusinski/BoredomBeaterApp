@@ -1,5 +1,6 @@
 package pl.studioandroida.niemanudy.domain.use_case
 
+import android.util.Log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import pl.studioandroida.niemanudy.data.remote.toActivity
@@ -15,13 +16,11 @@ class GetActivityUseCase @Inject constructor(
 ){
     operator fun invoke(): Flow<Resource<Activity>> = flow {
         try {
-            emit(Resource.Loading<Activity>())
-            val activity = repository.getActivity().toActivity()
-            emit(Resource.Success<Activity>(activity))
-        }catch (e: HttpException) {
-            emit(Resource.Error<Activity>(e.localizedMessage ?: "An unexpected error occured"))
-        }catch (e: IOException){
-            emit(Resource.Error<Activity>(e.localizedMessage ?: "Couldn't reach server. Check your internet connection"))
+            emit(Resource.Loading())
+            val activity = repository.getActivity()
+            emit(activity)
+        }catch (e: Exception) {
+            emit(Resource.Error("An unexpected error occured"))
         }
     }
 

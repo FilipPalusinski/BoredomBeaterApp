@@ -1,4 +1,4 @@
-package pl.studioandroida.niemanudy.presentation.activity_home
+package pl.studioandroida.niemanudy.presentation.home
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
@@ -20,14 +20,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import pl.studioandroida.niemanudy.data.remote.ActivityDto
 import java.lang.Exception
 
 
 @Composable
 fun ActivityScreen(
     paddingValues: PaddingValues,
-    viewModel: ActivityViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
     Column (
@@ -47,7 +46,9 @@ fun ActivityScreen(
             )
             Text(
                 text = result.activity,
-                fontSize = 17.sp
+                fontSize = 17.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(50.dp, 20.dp, 50.dp, 50.dp)
             )
             Spacer(modifier = Modifier.height(25.dp))
 
