@@ -30,7 +30,7 @@ class ActivityRepositoryImplTest  {
 
     @ExperimentalCoroutinesApi
     @Test
-    fun testActivityRepositoryImpl() = runTest {
+    fun getActivityTest() = runTest {
         val remoteActivity = ActivityDto("activity", "type", 3, 4.0, "222", "https://google.com", 0.0)
         val expectedPosts = Activity("activity", "type", 3, "https://google.com")
         whenever(activityService.getActivity()).thenReturn(remoteActivity)
