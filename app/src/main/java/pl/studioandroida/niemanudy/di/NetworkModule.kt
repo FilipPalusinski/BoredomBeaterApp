@@ -7,8 +7,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import pl.studioandroida.niemanudy.data.remote.ActivityService
-import pl.studioandroida.niemanudy.data.repository.ActivityRepositoryImpl
-import pl.studioandroida.niemanudy.domain.repository.ActivityRepository
 import pl.studioandroida.niemanudy.util.Constants.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -34,11 +32,4 @@ object NetworkModule {
             .build()
             .create(ActivityService::class.java)
     }
-
-    @Provides
-    @Singleton
-    fun provideCoinRepository(api: ActivityService): ActivityRepository {
-        return ActivityRepositoryImpl(api)
-    }
-
 }

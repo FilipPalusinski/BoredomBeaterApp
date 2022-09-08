@@ -2,7 +2,6 @@ package pl.studioandroida.niemanudy.data.remote
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
@@ -12,9 +11,7 @@ import org.junit.After
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import org.mockito.MockitoAnnotations
-import org.mockito.kotlin.notNull
-import pl.studioandroida.niemanudy.util.Constants.BASE_URL
+import pl.studioandroida.niemanudy.data.mapper.toActivity
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 

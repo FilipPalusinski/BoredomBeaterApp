@@ -24,17 +24,12 @@ import java.lang.Exception
 
 
 @Composable
-fun ActivityScreen(
-    paddingValues: PaddingValues,
-    viewModel: HomeViewModel = hiltViewModel()
+fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
     Column (
         modifier = Modifier
-            .fillMaxSize()
-            .padding(bottom = paddingValues.calculateBottomPadding()),
-
-        //.padding(16.dp) ,
+            .fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){

@@ -3,7 +3,6 @@ package pl.studioandroida.niemanudy.data.remote
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import pl.studioandroida.niemanudy.domain.model.Activity
 
 @JsonClass(generateAdapter = true)
 data class ActivityDto(
@@ -18,14 +17,5 @@ data class ActivityDto(
     )
 
 
-
-fun ActivityDto.toActivity(): Activity{
-    return Activity(
-        activity = activity,
-        type = type,
-        participants = participants,
-        link = link
-    )
-}
 
 

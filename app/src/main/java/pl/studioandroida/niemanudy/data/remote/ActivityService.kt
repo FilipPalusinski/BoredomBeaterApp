@@ -1,7 +1,5 @@
 package pl.studioandroida.niemanudy.data.remote
 
-import pl.studioandroida.niemanudy.util.Resource
-import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
 
