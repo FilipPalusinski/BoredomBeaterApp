@@ -44,7 +44,7 @@ fun FavouriteScreen(
                     items(state.activities) { activity ->
                         listCounter++
                         ActivityListItem(activity, viewModel, listCounter)
-                        Divider(startIndent = 8.dp, thickness = 1.dp, color = Color.Black)
+                        Divider(startIndent = 8.dp, thickness = 1.dp, color = MaterialTheme.colors.onSurface)
                     }
                 }
                 if(state.error.isNotBlank()) {

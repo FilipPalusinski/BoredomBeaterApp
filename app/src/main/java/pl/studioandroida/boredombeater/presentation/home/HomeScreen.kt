@@ -61,7 +61,7 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()
             .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp))
             .fillMaxSize()
 
-            .background(Color.White),
+            .background(MaterialTheme.colors.surface),
 
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -72,21 +72,21 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()
                     text = "If you are bored you can:",
                     fontWeight = FontWeight.Bold,
                     fontSize = 22.sp,
-                    color = MaterialTheme.colors.onSecondary
+                    color = MaterialTheme.colors.onSurface
                     )
                 Text(
                     text = result.activity,
                     fontSize = 22.sp,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(50.dp, 20.dp, 50.dp, 50.dp),
-                    color = MaterialTheme.colors.onSecondary
+                    color = MaterialTheme.colors.onSurface
                 )
                 Spacer(modifier = Modifier.height(25.dp))
 
                 Text(
                     text = "Activity type: ${result.type}",
                     fontSize = 20.sp,
-                    color = MaterialTheme.colors.onSecondary
+                    color = MaterialTheme.colors.onSurface
                 )
 
 
@@ -101,7 +101,7 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()
                 Text(
                     text = text,
                     fontSize = 20.sp,
-                    color = MaterialTheme.colors.onSecondary
+                    color = MaterialTheme.colors.onSurface
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
