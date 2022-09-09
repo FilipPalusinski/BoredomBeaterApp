@@ -10,7 +10,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "pl.studioandroida.niemanudy"
+        applicationId "pl.studioandroida.boredombeater"
         minSdk 27
         targetSdk 32
         versionCode 1
