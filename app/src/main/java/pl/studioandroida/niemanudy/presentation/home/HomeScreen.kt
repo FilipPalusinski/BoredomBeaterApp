@@ -3,10 +3,9 @@ package pl.studioandroida.niemanudy.presentation.home
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.ClickableText
-import androidx.compose.material.Button
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -92,11 +91,19 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()
             )
             Spacer(modifier = Modifier.height(60.dp))
 
+            ExtendedFloatingActionButton(
+                icon = { Icon(Icons.Filled.Star,"") },
+                text = { Text("Add to Favourites") },
+                onClick = { viewModel.addActivityToFav() },
+                elevation = FloatingActionButtonDefaults.elevation(8.dp)
+            )
+            Spacer(modifier = Modifier.height(90.dp))
             Button(
                 onClick = { viewModel.getActivity() }
             ){
-                Text(text = "Not Today",fontSize = 16.sp,)
+                Text(text = "Next Activity",fontSize = 16.sp,)
             }
+
         }
         if(state.error.isNotBlank()) {
             Text(
@@ -109,8 +116,7 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()
 
             )
         }
-        if(state.isLoading) {
-            CircularProgressIndicator()            }
+        if(state.isLoading) { CircularProgressIndicator() }
 
 
 

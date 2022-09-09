@@ -12,6 +12,8 @@ interface ActivityRepository {
 
     suspend fun insertActivity(activity: Activity)
 
+    suspend fun deleteActivity(activity: Activity)
+
     suspend fun getActivities(): Resource<List<Activity>>
 
 }

@@ -1,6 +1,7 @@
 package pl.studioandroida.niemanudy.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -26,6 +27,7 @@ import pl.studioandroida.niemanudy.presentation.home.HomeViewModel
 import pl.studioandroida.niemanudy.ui.theme.NieMaNudyTheme
 
 
+
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,14 +45,7 @@ class MainActivity : ComponentActivity() {
 
                     Scaffold(
                         topBar = { } ,
-                        floatingActionButton = {
-                            FloatingActionButton(
-                                onClick = { HomeViewModel.addActivityToFav() }
-                            ) {
-                                Icon(Icons.Filled.Star,"")
-                            }
-                        }
-                        , content = {padding ->
+                        content = {padding ->
                             Box(modifier = Modifier.padding(padding)) {
                                 Navigation(navController = navController, HomeViewModel, FavViewModel)
                             }
@@ -79,7 +74,7 @@ class MainActivity : ComponentActivity() {
             composable(
                 route = NavigationItem.Favourite.route
             ) {
-                FavouriteScreen(navController, FavViewModel)
+                FavouriteScreen(FavViewModel)
                 FavViewModel.getActivities()
             }
         }

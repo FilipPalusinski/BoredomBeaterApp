@@ -1,9 +1,6 @@
 package pl.studioandroida.niemanudy.data.local
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface ActivityDao {
@@ -12,4 +9,7 @@ interface ActivityDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertActivity(activity: ActivityEntity)
+
+    @Delete
+    suspend fun deleteActivity(activity: ActivityEntity)
 }

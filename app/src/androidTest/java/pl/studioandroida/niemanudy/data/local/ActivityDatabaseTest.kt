@@ -35,7 +35,7 @@ class ActivityDatabaseTest: TestCase(){
 
 
     @Test
-    fun writeAndReadActivityEntity()= runBlocking{
+    fun writeAndReadActivityEntity() = runBlocking{
         val exampleActivity = ActivityEntity(
             "Go for a run",
             "Sport",
@@ -45,7 +45,23 @@ class ActivityDatabaseTest: TestCase(){
         )
         dao.insertActivity(exampleActivity)
         val activityList = dao.getActivities()
-        assertThat(activityList.contains(exampleActivity)).isTrue()
+        assertThat(activityList).contains(exampleActivity)
+    }
+
+    @Test
+    fun deleteActivityEntity() = runBlocking {
+        val exampleActivity = ActivityEntity(
+            "Go for a run",
+            "Sport",
+            0,
+            "https://en.wikipedia.org/wiki/Running",
+            1
+        )
+        dao.insertActivity(exampleActivity)
+        dao.deleteActivity(exampleActivity)
+        val activityList = dao.getActivities()
+        assertThat(activityList).doesNotContain(exampleActivity)
+
     }
 
 }

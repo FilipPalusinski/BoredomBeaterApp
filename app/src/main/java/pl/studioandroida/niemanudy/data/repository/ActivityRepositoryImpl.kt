@@ -33,16 +33,21 @@ class ActivityRepositoryImpl @Inject constructor(
     override suspend fun insertActivity(activity: Activity) {
         try{
             activityDao.insertActivity(activity.toActivityEntity())
-            Log.d("works", "Activity  ${activity.activity}")
-            Log.d("works", "added  ${activity.toActivityEntity().activity}")
-
-
         } catch (e: Exception) {
-            Log.d("works", "Could not insert data: $e")
+            Log.d("Exception", "Could not insert data: $e")
         }
     }
 
-    override suspend fun getActivities(): Resource<List<Activity>> {
+    override suspend fun deleteActivity(activity: Activity) {
+        try{
+            activityDao.deleteActivity(activity.toActivityEntity())
+        } catch (e: Exception) {
+            Log.d("Exception", "Could not delete data: $e")
+        }
+    }
+
+
+        override suspend fun getActivities(): Resource<List<Activity>> {
         return try {
             val activities = activityDao.getActivities()
             Resource.Success(
@@ -54,12 +59,6 @@ class ActivityRepositoryImpl @Inject constructor(
                 Resource.Error("Database Error")
             }
         }
-
-//        }catch (e: HttpException) {
-//            Resource.Error(e.localizedMessage ?: "An unexpected error occured")
-//        }catch (e: IOException){
-//            Resource.Error("Couldn't reach server. Check your internet connection")
-//        }
 
 
     }
